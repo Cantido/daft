@@ -30,6 +30,30 @@ defmodule Daft.WaveFunction do
     }
   end
 
+  def sign(wave) do
+    %__MODULE__{
+      function: fn t ->
+        x = wave.function.(t)
+        if x < 0, do: -1, else: 1
+      end
+    }
+  end
+
+  def square(hz) do
+    sign(sine(hz))
+  end
+
+  def triangle(hz) do
+    a = 1
+    p =  1 / hz
+
+    %__MODULE__{
+      function: fn t ->
+        (4 * a / p) * abs(:math.fmod(t - p / 4.0, p) - (p / 2)) - a
+      end
+    }
+  end
+
   def constant(val) do
     %__MODULE__{
       function: fn _t -> val end

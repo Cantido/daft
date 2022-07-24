@@ -37,6 +37,17 @@ defmodule Daft.Sample do
     }
   end
 
+  def zip_with(sample1, sample2, zip_fun) do
+    unless sample1.sample_rate == sample2.sample_rate do
+      raise "sample rates must match in order to zip them, but got #{sample1.sample_rate} and #{sample2.sample_rate}"
+    end
+
+    %__MODULE__{
+      sample_rate: sample1.sample_rate,
+      samples: Stream.zip_with(sample1.samples, sample2.samples, zip_fun)
+    }
+  end
+
   def play(sample) do
     filename = Path.join(System.tmp_dir!(), to_string(System.system_time()))
 
@@ -56,6 +67,10 @@ defmodule Daft.Sample do
 
   def concat(sample1, sample2) do
     do_concat(sample1, sample2)
+  end
+
+  def concat([sample]) do
+    sample
   end
 
   def concat([sample1, sample2]) do

@@ -4,6 +4,36 @@ defmodule Daft.Pitch do
   """
 
   @semitone_shifts [
+    {:e2, -29},
+    {:f2, -28},
+    {:f2sharp, -27},
+    {:g2flat, -27},
+    {:g2, -26},
+    {:g2sharp, -25},
+    {:a2flat, -25},
+    {:a2, -24},
+    {:a2sharp, -23},
+    {:b2flat, -23},
+    {:b2, -22},
+
+    {:c3, -21},
+    {:c3sharp, -20},
+    {:d3flat, -20},
+    {:d3, -19},
+    {:d3sharp, -18},
+    {:e3flat, -18},
+    {:e3, -17},
+    {:f3, -16},
+    {:f3sharp, -15},
+    {:g3flat, -15},
+    {:g3, -14},
+    {:g3sharp, -13},
+    {:a3flat, -13},
+    {:a3, -12},
+    {:a3sharp, -11},
+    {:b3flat, -11},
+    {:b3, -10},
+
     {:c4, -9},
     {:c4sharp, -8},
     {:d4flat, -8},
@@ -21,6 +51,7 @@ defmodule Daft.Pitch do
     {:a4sharp, 1},
     {:b4flat, 1},
     {:b4, 2},
+
     {:c5, 3},
     {:c5sharp, 4},
     {:d5flat, 4},
@@ -34,7 +65,9 @@ defmodule Daft.Pitch do
     {:g5, 10},
     {:g5sharp, 11},
     {:a5flat, 11},
-    {:a5, 12}
+    {:a5, 12},
+    {:a5sharp, 13},
+    {:b5flat, 13}
   ]
 
   @doc """
