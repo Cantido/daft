@@ -52,4 +52,29 @@ defmodule Daft.Sample do
       acc <> <<x::float>>
     end)
   end
+
+  def concat(sample1, sample2) do
+    do_concat(sample1, sample2)
+  end
+
+  def concat([sample1, sample2]) do
+    do_concat(sample1, sample2)
+  end
+
+  def concat([sample1 | [sample2 | rest]]) do
+    next = do_concat(sample1, sample2)
+    concat([next | rest])
+  end
+
+  defp do_concat(sample1, sample2) do
+    unless sample1.sample_rate == sample2.sample_rate do
+      raise "sample rates must match in order to concat them, but got #{sample1.sample_rate} and #{sample2.sample_rate}"
+    end
+
+    %__MODULE__{
+      sample_rate: sample1.sample_rate,
+      samples: Stream.concat(sample1.samples, sample2.samples)
+    }
+  end
+
 end
