@@ -13,8 +13,6 @@ defmodule Daft.Pitch do
 
   @doc """
   Returns the pitch of the given note.
-
-  Assumes a twelve-tone scale system and a pitch standard of 440 Hz.
   """
   def note(name)
 
@@ -24,8 +22,6 @@ defmodule Daft.Pitch do
 
   @doc """
   Shifts a pitch up or down a number of semitones.
-
-  Assumes a twelve-tone scale system.
   """
   def shift_semitones(pitch, semitones) do
     twelfth_root_of_two = :math.pow(2, 1.0 / 12.0)

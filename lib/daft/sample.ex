@@ -53,6 +53,7 @@ defmodule Daft.Sample do
     end)
   end
 
+
   def concat(sample1, sample2) do
     do_concat(sample1, sample2)
   end
