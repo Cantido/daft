@@ -30,6 +30,12 @@ defmodule Daft.WaveFunction do
     }
   end
 
+  def constant(val) do
+    %__MODULE__{
+      function: fn _t -> val end
+    }
+  end
+
   def timeshift(wave, time) do
     %__MODULE__{
       function: fn t -> wave.function.(t + time) end
